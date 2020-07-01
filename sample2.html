@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <title>Ali Siddique</title>
+      <style>
+          @import url('https://fonts.googleapis.com/css?family=Quicksand:400,500,700');
+html,
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Quicksand", sans-serif;
+    font-size: 62.5%;
+    font-size: 10px;
+}
+html {
+  scroll-behavior: smooth;
+}
+/*-- Inspiration taken from abdo steif -->
+/* --> https://codepen.io/abdosteif/pen/bRoyMb?editors=1100*/
+
+/* Navbar section */
+
+.nav {
+    z-index: 1;
+    width: 100%;
+    height: 65px;
+    position: fixed;
+    line-height: 65px;
+    text-align: center;
+}
+
+.nav div.logo {
+    float: left;
+    width: auto;
+    height: auto;
+    padding-left: 3rem;
+}
+
+.nav div.logo a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 2.5rem;
+}
+
+.nav div.logo a:hover {
+    color: #00E676;
+}
+
+.nav div.main_list {
+    height: 65px;
+    float: right;
+}
+
+.nav div.main_list ul {
+    width: 100%;
+    height: 65px;
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav div.main_list ul li {
+    width: auto;
+    height: 65px;
+    padding: 0;
+    padding-right: 3rem;
+}
+
+.nav div.main_list ul li a {
+    text-decoration: none;
+    color: #fff;
+    line-height: 65px;
+    font-size: 2.4rem;
+}
+
+.nav div.main_list ul li a:hover {
+    color: #00E676;
+}
+
+
+/* Home section */
+
+.home {
+    width: 100%;
+    height: 100vh;
+    background-image: url(https://images.unsplash.com/photo-1498550744921-75f79806b8a7?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b0f6908fa5e81286213c7211276e6b3d&auto=format&fit=crop&w=1500&q=80);
+    background-position: center top;
+	background-size:cover;
+}
+
+.navTrigger {
+    display: none;
+}
+
+.nav {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+
+
+/* Media qurey section */
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .container {
+        margin: 0;
+    }
+}
+
+@media screen and (max-width:768px) {
+    .navTrigger {
+        
+        display: block;
+        
+    }
+    .nav div.logo {
+        margin-left: 15px;
+    }
+    .nav div.main_list {
+        
+        width: 100%;
+        height: 0;
+        overflow: hidden;
+    }
+    .nav div.show_list {
+       
+        height: auto;
+        display: none;
+    }
+    .nav div.main_list ul {
+       
+        flex-direction: column;
+        width: 100%;
+        height: 100vh;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        background-color: #111;
+        /*same background color of navbar*/
+        background-position: center top;
+    }
+    .nav div.main_list ul li {
+        
+        width: 100%;
+        text-align: right;
+    }
+    .nav div.main_list ul li a {
+         
+        text-align: center;
+        width: 100%;
+        font-size: 3rem;
+        padding: 20px;
+    }
+    .nav div.media_button {
+        display: block;
+    }
+    
+}
+
+
+/* Animation */
+/* Inspiration taken from Dicson https://codemyui.com/simple-hamburger-menu-x-mark-animation/ */
+
+.navTrigger {
+    
+    cursor: pointer;
+    width: 30px;
+    height: 25px;
+    margin: auto;
+    position: absolute;
+    right: 30px;
+    top: 0;
+    bottom: 0;
+}
+
+.navTrigger i {
+    background-color: #fff;
+    border-radius: 2px;
+    content: '';
+    display: block;
+    width: 100%;
+    height: 4px;
+}
+
+.navTrigger i:nth-child(1) {
+    -webkit-animation: outT 0.8s backwards;
+    animation: outT 0.8s backwards;
+    -webkit-animation-direction: reverse;
+    animation-direction: reverse;
+}
+
+.navTrigger i:nth-child(2) {
+    margin: 5px 0;
+    -webkit-animation: outM 0.8s backwards;
+    animation: outM 0.8s backwards;
+    -webkit-animation-direction: reverse;
+    animation-direction: reverse;
+}
+
+.navTrigger i:nth-child(3) {
+    -webkit-animation: outBtm 0.8s backwards;
+    animation: outBtm 0.8s backwards;
+    -webkit-animation-direction: reverse;
+    animation-direction: reverse;
+}
+
+.navTrigger.active i:nth-child(1) {
+    -webkit-animation: inT 0.8s forwards;
+    animation: inT 0.8s forwards;
+}
+
+.navTrigger.active i:nth-child(2) {
+    -webkit-animation: inM 0.8s forwards;
+    animation: inM 0.8s forwards;
+}
+
+.navTrigger.active i:nth-child(3) {
+    -webkit-animation: inBtm 0.8s forwards;
+    animation: inBtm 0.8s forwards;
+}
+
+@-webkit-keyframes inM {
+    50% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(45deg);
+    }
+}
+
+@keyframes inM {
+    50% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(45deg);
+    }
+}
+
+@-webkit-keyframes outM {
+    50% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(45deg);
+    }
+}
+
+@keyframes outM {
+    50% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(45deg);
+    }
+}
+
+@-webkit-keyframes inT {
+    0% {
+        -webkit-transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        -webkit-transform: translateY(9px) rotate(0deg);
+    }
+    100% {
+        -webkit-transform: translateY(9px) rotate(135deg);
+    }
+}
+
+@keyframes inT {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(9px) rotate(0deg);
+    }
+    100% {
+        transform: translateY(9px) rotate(135deg);
+    }
+}
+
+@-webkit-keyframes outT {
+    0% {
+        -webkit-transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        -webkit-transform: translateY(9px) rotate(0deg);
+    }
+    100% {
+        -webkit-transform: translateY(9px) rotate(135deg);
+    }
+}
+
+@keyframes outT {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(9px) rotate(0deg);
+    }
+    100% {
+        transform: translateY(9px) rotate(135deg);
+    }
+}
+
+@-webkit-keyframes inBtm {
+    0% {
+        -webkit-transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        -webkit-transform: translateY(-9px) rotate(0deg);
+    }
+    100% {
+        -webkit-transform: translateY(-9px) rotate(135deg);
+    }
+}
+
+@keyframes inBtm {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-9px) rotate(0deg);
+    }
+    100% {
+        transform: translateY(-9px) rotate(135deg);
+    }
+}
+
+@-webkit-keyframes outBtm {
+    0% {
+        -webkit-transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        -webkit-transform: translateY(-9px) rotate(0deg);
+    }
+    100% {
+        -webkit-transform: translateY(-9px) rotate(135deg);
+    }
+}
+
+@keyframes outBtm {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-9px) rotate(0deg);
+    }
+    100% {
+        transform: translateY(-9px) rotate(135deg);
+    }
+}
+
+.affix {
+    padding: 0;
+    background-color: #111;
+}
+
+
+
+
+
+
+.myH2 {
+	text-align:center;
+	font-size: 4rem;
+}
+.myP {
+	text-align: justify;
+	padding-left:15%;
+	padding-right:15%;
+	font-size: 20px;
+}
+@media all and (max-width:700px){
+	.myP {
+		padding:2%;
+    }
+  
+
+  
+}
+#namehead{
+   
+  vertical-align:middle;
+  text-align: center;
+  line-height: 100vh;
+
+}
+.loader {
+
+ width:100%;
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%,-50%);
+
+}
+.loader h1 {
+   text-align:center;
+	margin: 0;
+	padding: 0;
+	font-size: 7em;
+	color: rgba(138, 22, 22, 0.1);
+	background-image: url(http://viktor-cegan.wz.cz/ryba2.png);
+	background-repeat: repeat-x;
+	-webkit-background-clip: text;
+	animation: animate 15s linear infinite;
+}
+@keyframes animate {
+	0%{
+		background-position: left 0 top 50px;
+	}
+	20%{
+		background-position: left 800PX top -50px;
+	}
+	40%{
+		background-position: left 1800px top -60px;
+	}
+	60%{
+		background-position: left 2400px top -80px;
+	}
+	80%{
+		background-position: left 3400px top -50px;
+	}
+	100%{
+		background-position: left 4400px top 50px;
+	}
+}
+.item {
+
+    margin: 10px auto 20px;
+    display: block;
+  
+}
+.head2{
+    text-align:center;
+    font-size:50px;
+}
+#projects{
+    background: rgb(169,169,169);
+    width:100%;
+   height:auto;
+   padding-bottom: 50px;;
+   overflow: hidden;
+  
+   
+}
+#diaryimg{
+    float:left;
+    margin-right:180px;
+    margin-left:40px;
+}
+#diarytext{
+   
+    font-size:28px;
+    
+}
+#blogimg{
+    float:right;
+    margin-left: 285px;
+    margin-right:60px;
+    margin-top:60px;
+}
+
+#blogtext{
+    margin-top:130px;
+    text-align: justify; /* For Edge */
+  -moz-text-align-last: justify; /* For Firefox prior 58.0 */
+  text-align-last: justify;
+    font-size:28px;
+    
+}
+#web{
+    background-color: black;
+    color:white;
+    margin-top:-4px;
+    height:auto;
+    
+    
+}
+#webhead{
+  text-align:center;
+    padding-top:40px;
+   
+    font-size:28px;
+}
+#insta{
+    padding-top:10px;
+    padding-bottom:20px;
+}
+
+@media only screen and (max-width: 600px) {
+    #diaryimg{
+        float:none;
+        margin: 10px auto 20px;
+        display: block;
+        text-align:center;
+}
+#blogimg{
+    float:none;
+    margin: 10px auto 20px;
+        display: block;
+        text-align:center;
+}
+#blogtext{
+    margin-top:-10px;
+    text-align: none; /* For Edge */
+  -moz-text-align-last: none; /* For Firefox prior 58.0 */
+  text-align-last: none;
+} 
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+.container {
+  max-width: 80%;
+  margin: auto;
+  display: flex;
+  
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 250px;
+  margin-top: 60px;
+  border-radius: 44px;
+  background: #A9A9A9;
+  padding: 30px;
+  box-shadow:  23px 23px 47px #939393, 
+             -23px -23px 47px #bfbfbf;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 1.5;
+}
+
+.card:hover {
+  box-shadow:  inset 13px 13px 30px #939393, 
+             inset -13px -13px 26px #bfbfbf;
+}
+
+.header {
+  margin: 20px 0;  
+  color: blue;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+.logo-img {
+  max-width: 60px;
+}
+
+.btn {
+  display: block;
+  text-decoration: none;
+  margin-top: 20px;
+   border-radius: 5px;
+background: #A9A9A9;
+box-shadow:  6px 6px 13px #939393, 
+             -6px -6px 13px #bfbfbf;
+  padding: 10px;
+}
+
+.btn:hover {
+  box-shadow:  inset 3px 3px 5px #939393, 
+             inset -3px -6px 15px #bfbfbf;
+}
+      </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="container">
+            <div class="logo">
+                <a href="#">Ali Siddique</a>
+            </div>
+            <div id="mainListDiv" class="main_list">
+                <ul class="navlinks">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    
+                </ul>
+            </div>
+            <span class="navTrigger">
+                <i></i>
+                <i></i>
+                <i></i>
+            </span>
+        </div>
+    </nav>
+
+    <section class="home">
+        <div class="loader">
+            <h1>Ali Siddique</h1>
+            
+        </div>
+    </section>
+ 
+   <div>
+       <h2 id="skills" class="head2">Skills</h2>
+       <img class="item" data-aos="fade-right" width="250" height="250" src=html.png>
+       <img class="item" data-aos="fade-left" width="250" height="250" src=css.png>
+       <img class="item" data-aos="zoom-in" width="250" height="250" src=javascript.png>
+       <img class="item" data-aos="zoom-out" width="250" height="250" src=jquery.png>
+       <img class="item" data-aos="flip-up" width="250" height="250" src=bootstrap.png>
+       <img class="item" data-aos="flip-down" width="250" height="250" src=php.png>
+       <img class="item" data-aos="flip-right" width="250" height="250" src=mysql.png>
+       <img class="item" data-aos="flip-left" width="250" height="250" src=java.png>
+
+   </div>
+   
+<div id="projects">
+    <h2  class="head2">Projects</h2>
+    <div class="container">
+
+  
+        <div class="card">
+         <img class="logo-img" src="https://image.flaticon.com/icons/svg/407/407566.svg" alt="logo">
+         <h2 class="header">My Secret Diary</h2>
+         <p class="content">It is a place where you can store your thoughts ,information and details secretly.First you have to create your account by entering username and password and after this you can log in and then can use Secret diary.The information you write on Secret diary is automatically get stored in our database using AjAX.I used MESSAGE DIGEST 5(MD5) to store user's password securely in our database and BOOTSRAP to make it attractive.</p>
+         <a class="btn" href="#">Read More</a>
+       </div>
+       
+        <div class="card">
+         <img class="logo-img" src="https://image.flaticon.com/icons/svg/407/407566.svg" alt="logo">
+         <h2 class="header">Blogger's Point</h2>
+         <p class="content">This web app is developed on LARAVEL framework.After registration and login you can write blogs which is publicly visible and can read oher users blog.
+            Technology used - Html, Css, Javascript, Laravel, PHP and Bootstrap.</p>
+         <a class="btn" href="#">Read More</a>
+       </div>
+     </div>
+
+    </div>
+ 
+    <div id="web">
+         <h2 id="webhead">Around the web</h2>
+     <div id="insta">
+        <a href="http://www.instagram.com/i_am_ali_siddique"><img class="item"  width="40" height="40" src=insta.png></a> 
+    </div>
+    </div>
+
+<!-- Jquery needed -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="js/scripts.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<!-- Function used to shrink nav bar removing paddings and adding black background -->
+    <script>
+        $(window).scroll(function() {
+            if ($(document).scrollTop() > 50) {
+                $('.nav').addClass('affix');
+                console.log("OK");
+            } else {
+                $('.nav').removeClass('affix');
+            }
+        });
+        AOS.init({
+  duration: 1200,
+});
+    </script>
+    <script>
+        $('.navTrigger').click(function () {
+    $(this).toggleClass('active');
+    console.log("Clicked menu");
+    $("#mainListDiv").toggleClass("show_list");
+    $("#mainListDiv").fadeIn();
+
+});
+$(document).ready(function(){
+	$('.frame').click(function(){
+		$('.top').addClass('open');
+		$('.message').addClass('pull');
+	})
+});
+$('#mainListDiv li').on('click', function(){
+        $("#mainListDiv").hide();
+        $("#mainListDiv-icon").removeClass("active");
+    });
+    </script>
+</body>
+</html>
